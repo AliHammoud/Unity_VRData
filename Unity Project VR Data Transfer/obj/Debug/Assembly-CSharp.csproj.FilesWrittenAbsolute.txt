@@ -1,0 +1,13 @@
+/Users/alihammoud/Unity_VRData/Unity Project VR Data Transfer/Temp/bin/Debug/UnityEngine.dll
+/Users/alihammoud/Unity_VRData/Unity Project VR Data Transfer/Temp/bin/Debug/UnityEditor.dll
+/Users/alihammoud/Unity_VRData/Unity Project VR Data Transfer/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/alihammoud/Unity_VRData/Unity Project VR Data Transfer/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/alihammoud/Unity_VRData/Unity Project VR Data Transfer/Temp/bin/Debug/Mono.Cecil.dll
+/Users/alihammoud/Unity_VRData/Unity Project VR Data Transfer/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/alihammoud/Unity_VRData/Unity Project VR Data Transfer/Temp/bin/Debug/Unity.DataContract.dll
+/Users/alihammoud/Unity_VRData/Unity Project VR Data Transfer/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/alihammoud/Unity_VRData/Unity Project VR Data Transfer/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/alihammoud/Unity_VRData/Unity Project VR Data Transfer/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/alihammoud/Unity_VRData/Unity Project VR Data Transfer/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/alihammoud/Unity_VRData/Unity Project VR Data Transfer/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/alihammoud/Unity_VRData/Unity Project VR Data Transfer/Temp/bin/Debug/Mono.Cecil.Mdb.dll

@@ -415,6 +415,8 @@ public class VRData : MonoBehaviour {
 
 	private string msg;
 
+
+
 	public IEnumerator postInit(){
 
 		yield return null;
@@ -452,33 +454,6 @@ public class VRData : MonoBehaviour {
 
 	}
 
-	#region event_handling
-	internal IEnumerator handleSendData () {
-
-		if (Session.connectionActive) {
-
-			//TODO: Wait for vr data to build
-			//string _data = yield return VRDataObjectBuilder.buildVRDataString(false);
-			Debug.Log (_data);
-			VRDataObject.clearAllData ();
-			StartCoroutine (sendDataCo (_data));
-
-		} else {
-
-			string _data = VRDataObjectBuilder.buildVRDataString(true);
-			Debug.Log (_data);
-			VRDataObject.clearAllData ();
-
-		}
-
-	}
-
-	internal IEnumerator buildFileAsync() {
-
-	}
-
-	#endregion event_handling
-
 	IEnumerator HTTPRequest(WWW www, string _flag){
 
 		yield return www;
@@ -500,7 +475,7 @@ public class VRData : MonoBehaviour {
 				//TODO: hook coroutine to event
 				//Start listening to sendDataRequests
 				//VRDataObject.OnSendRequest += handleSendData;
-				VRDataObject.OnSendRequest += StartCoroutine(handleSendData());
+				VRDataObject.OnSendRequest += handleSendData;
 				break;
 
 			case("dataRequest"):
@@ -531,6 +506,31 @@ public class VRData : MonoBehaviour {
 		}
 
 	}
+
+	#region event_handling
+	internal void handleSendData () {
+
+		//yield return null;
+
+		if (Session.connectionActive) {
+
+			//TODO: Wait for vr data to build
+			//string _data = yield return VRDataObjectBuilder.buildVRDataString(false);
+			string _data = VRDataObjectBuilder.buildVRDataString(false);
+			Debug.Log (_data);
+			VRDataObject.clearAllData ();
+			StartCoroutine (sendDataCo (_data));
+
+		} else {
+
+			string _data = VRDataObjectBuilder.buildVRDataString(true);
+			Debug.Log (_data);
+			VRDataObject.clearAllData ();
+
+		}
+
+	}
+	#endregion event_handling
 
 	void OnEnable () {
 
