@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{B13B9AA3-EBA5-3BCA-6623-063CDDC3D629}") = "VR Data Transfer", "Assembly-CSharp-firstpass.csproj", "{06C7760D-D38D-C263-179C-6025FC81BC1F}"
+EndProject
+Project("{B13B9AA3-EBA5-3BCA-6623-063CDDC3D629}") = "VR Data Transfer", "Assembly-CSharp.csproj", "{1734A1E7-3E4C-5CEE-8AEC-AF6F8AC43A25}"
+EndProject
+Project("{B13B9AA3-EBA5-3BCA-6623-063CDDC3D629}") = "VR Data Transfer", "Assembly-CSharp-Editor.csproj", "{20952313-2CF0-8226-A561-4138A7285459}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06C7760D-D38D-C263-179C-6025FC81BC1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06C7760D-D38D-C263-179C-6025FC81BC1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06C7760D-D38D-C263-179C-6025FC81BC1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06C7760D-D38D-C263-179C-6025FC81BC1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1734A1E7-3E4C-5CEE-8AEC-AF6F8AC43A25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1734A1E7-3E4C-5CEE-8AEC-AF6F8AC43A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1734A1E7-3E4C-5CEE-8AEC-AF6F8AC43A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1734A1E7-3E4C-5CEE-8AEC-AF6F8AC43A25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20952313-2CF0-8226-A561-4138A7285459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20952313-2CF0-8226-A561-4138A7285459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20952313-2CF0-8226-A561-4138A7285459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20952313-2CF0-8226-A561-4138A7285459}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
