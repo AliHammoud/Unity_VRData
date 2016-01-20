@@ -54,6 +54,7 @@ namespace VRStandardAssets.Examples
             Debug.Log("Show out state");
             m_Renderer.material = m_NormalMaterial;
 			VRDataObject obj = new VRDataObject ("A");
+			//Handle instance deletions
 
         }
 

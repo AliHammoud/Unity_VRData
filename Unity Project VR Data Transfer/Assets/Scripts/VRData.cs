@@ -48,10 +48,10 @@ namespace VRDataLib {
 				allDataObjs.Add(this);
 
 				if(allDataObjs.Count >= OBJS_PER_REQUEST) {
-					
+
 					if (OnSendRequest != null) {
 
-						Debug.Log("Send request");
+						Debug.Log ("Send request");
 						OnSendRequest ();
 
 					}
@@ -107,13 +107,13 @@ namespace VRDataLib {
 				_scale;
 
 				_scene 			= new Tuple1<float> ("scene", 1);
-				_poi 			= new Tuple1<float>	("poi", 2);
+				_poi 			= new Tuple1<float> ("poi", 2);
 				_pos 			= new Tuple1<object> ("pos", new Tuple3<float, float, float>("x", 3, "y", 4, "z", 5));
 				_rot			= new Tuple1<object> ("rot", new Tuple3<float, float, float>("x", 6, "y", 7, "z", 8));
 				_scale			= new Tuple1<object> ("scale", new Tuple3<float, float, float>("x", 9, "y", 10, "z", 11));
-				_duration	 	= new Tuple1<float>	("duration", 12);
-				_interaction 	= new Tuple1<float>	("interaction", 13);
-				_timestamp	 	= new Tuple1<float>	("timestamp", 14);
+				_duration	 	= new Tuple1<float> ("duration", 12);
+				_interaction 	= new Tuple1<float> ("interaction", 13);
+				_timestamp	 	= new Tuple1<float> ("timestamp", 14);
 
 				_data.Add(_scene);
 				_data.Add(_poi);
@@ -129,7 +129,7 @@ namespace VRDataLib {
 			}
 
 			public static string buildVRDataString (bool createFile) {
-
+				
 				StringBuilder.stringifyData(createFile);
 
 				return StringBuilder.getDataString();
@@ -362,10 +362,6 @@ namespace VRDataLib {
 
 		}
 
-		public static class OfflineHandler {
-
-		}
-
 		//server communication classes
 
 		//TODO: Upgrade to System.net
@@ -411,8 +407,11 @@ namespace VRDataLib {
 public class VRData : MonoBehaviour {
 
 	public string
-		URL_INIT = "https://www.euriskomobility.me/vr/api/initialize_session.php",
-		URL_DATA = "https://www.euriskomobility.me/vr/api/submit_data.php";
+		//URL_INIT = "https://www.euriskomobility.me/vr/api/initialize_session.php",
+		//URL_DATA = "https://www.euriskomobility.me/vr/api/submit_data.php";
+
+		URL_INIT = "https://www.euriskomobility.me/wrongURLinit.php",
+		URL_DATA = "https://www.euriskomobility.me/wrongURLdata.php";
 
 	private string msg;
 
@@ -453,15 +452,32 @@ public class VRData : MonoBehaviour {
 
 	}
 
+	#region event_handling
+	internal IEnumerator handleSendData () {
 
-	void sendData () {
+		if (Session.connectionActive) {
 
-		string _data = VRDataObjectBuilder.buildVRDataString(false);
-		Debug.Log (_data);
-		VRDataObject.clearAllData ();
-		StartCoroutine (sendDataCo (_data));
+			//TODO: Wait for vr data to build
+			//string _data = yield return VRDataObjectBuilder.buildVRDataString(false);
+			Debug.Log (_data);
+			VRDataObject.clearAllData ();
+			StartCoroutine (sendDataCo (_data));
+
+		} else {
+
+			string _data = VRDataObjectBuilder.buildVRDataString(true);
+			Debug.Log (_data);
+			VRDataObject.clearAllData ();
+
+		}
 
 	}
+
+	internal IEnumerator buildFileAsync() {
+
+	}
+
+	#endregion event_handling
 
 	IEnumerator HTTPRequest(WWW www, string _flag){
 
@@ -470,6 +486,9 @@ public class VRData : MonoBehaviour {
 		// check for errors
 		if (www.error == null)
 		{
+			
+			Session.connectionActive = true;
+
 			msg = www.text;
 			Debug.Log("Request Success: " + www.text);
 
@@ -477,9 +496,11 @@ public class VRData : MonoBehaviour {
 			switch (_flag) {
 
 			case ("initRequest"):
-				
+
+				//TODO: hook coroutine to event
 				//Start listening to sendDataRequests
-				VRDataObject.OnSendRequest += sendData;
+				//VRDataObject.OnSendRequest += handleSendData;
+				VRDataObject.OnSendRequest += StartCoroutine(handleSendData());
 				break;
 
 			case("dataRequest"):
@@ -491,7 +512,22 @@ public class VRData : MonoBehaviour {
 			}
 
 		} else {
+			
 			Debug.Log("WWW Error: "+ www.error);
+
+			Session.connectionActive = false;
+
+			switch (_flag) {
+
+			case ("initRequest"):
+				break;
+
+			case("dataRequest"):
+				//TODO: write to file
+				break;
+
+			}
+
 		}
 
 	}
@@ -504,6 +540,14 @@ public class VRData : MonoBehaviour {
 	}
 
 	void Start () {
+
+		//Create "Resources" directory to write data file when no connection
+		if (!Directory.Exists("Assets/Resources")) {
+			
+			Directory.CreateDirectory ("Assets/Resources");
+			Debug.Log ("created dir");
+
+		}
 
 	}
 
