@@ -1,6 +1,9 @@
 using UnityEngine;
 using VRStandardAssets.Utils;
+using System;
 using VRDataLib.Data;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace VRStandardAssets.Examples
 {
@@ -15,10 +18,17 @@ namespace VRStandardAssets.Examples
         [SerializeField] private VRInteractiveItem m_InteractiveItem;
         [SerializeField] private Renderer m_Renderer;
 
+		private Dictionary<string, string> args;
+		private bool isLooking = false;
+		private bool isPOI = false;
+		private const int FOCUS_TIME = 2;
+		private float lookAtTime;
 
         private void Awake ()
         {
+			
             m_Renderer.material = m_NormalMaterial;
+
         }
 
 
@@ -43,18 +53,58 @@ namespace VRStandardAssets.Examples
         //Handle the Over event
         private void HandleOver()
         {
-            Debug.Log("Show over state");
+			
+			isLooking = true;
             m_Renderer.material = m_OverMaterial;
+
+			StartCoroutine (letFocus());
+
         }
+
+		private IEnumerator letFocus() {
+
+			args = new Dictionary<string, string>();
+
+			lookAtTime = Time.timeSinceLevelLoad;
+
+			yield return new WaitForSeconds (FOCUS_TIME);
+
+			if (isLooking) {
+
+				isPOI = true;
+
+			} else {
+
+			}
+
+		}
 
 
         //Handle the Out event
         private void HandleOut()
         {
-            Debug.Log("Show out state");
+			
+			isLooking = false;
+			if (isPOI) {
+
+				//Get look duration
+				double lookDuration = Time.timeSinceLevelLoad - lookAtTime;
+				lookDuration = Math.Round (lookDuration, VRDataObjectBuilder.PRECISION);
+				args.Add ("duration", lookDuration.ToString());
+
+				//Get timestamp (seconds since 01/01/1970)
+				long ticks = DateTime.UtcNow.Ticks - DateTime.Parse("01/01/1970 00:00:00").Ticks;
+				ticks /= 10000000; //Convert windows ticks to seconds
+				args.Add ("timestamp", ticks.ToString());
+
+				//Set interaction type
+				args.Add("interaction", "focus");
+
+				Debug.Log ("Focused on: " + this.GetComponent<Transform> ().name + " for " + lookDuration + " secs");
+				VRDataObject obj = new VRDataObject ("A", this.GetComponent<Transform>(), args);
+
+			}
             m_Renderer.material = m_NormalMaterial;
-			VRDataObject obj = new VRDataObject ("A");
-			//Handle instance deletions
 
         }
 
@@ -62,6 +112,7 @@ namespace VRStandardAssets.Examples
         //Handle the Click event
         private void HandleClick()
         {
+			
             Debug.Log("Show click state");
             m_Renderer.material = m_ClickedMaterial;
 
