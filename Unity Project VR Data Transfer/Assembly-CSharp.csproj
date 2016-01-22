@@ -49,7 +49,6 @@
      <Compile Include="Assets\Scripts\VRData.cs" />
      <Compile Include="Assets\Scripts\VRData_bkp.cs" />
      <Compile Include="Assets\VRSampleScenes\Scripts\Common\SessionData.cs" />
-     <Compile Include="Assets\VRSampleScenes\Scripts\Examples\ExampleInteractiveItem.cs" />
      <Compile Include="Assets\VRSampleScenes\Scripts\Examples\ExampleRenderScale.cs" />
      <Compile Include="Assets\VRSampleScenes\Scripts\Examples\ExampleRotation.cs" />
      <Compile Include="Assets\VRSampleScenes\Scripts\Examples\ExampleTouchpad.cs" />
@@ -66,6 +65,8 @@
      <Compile Include="Assets\VRSampleScenes\Scripts\Utils\UITint.cs" />
      <Compile Include="Assets\VRSampleScenes\Scripts\Utils\VRCameraFade.cs" />
      <Compile Include="Assets\VRSampleScenes\Scripts\Utils\VRCameraUI.cs" />
+     <Compile Include="Assets\VRStandardAssets\Scripts\ExampleInteractiveItem.cs" />
+     <Compile Include="Assets\VRStandardAssets\Scripts\Restart.cs" />
      <Compile Include="Assets\VRStandardAssets\Scripts\VRDeviceManager.cs" />
      <Compile Include="Assets\VRStandardAssets\Scripts\VREyeRaycaster.cs" />
      <Compile Include="Assets\VRStandardAssets\Scripts\VRFPSCounter.cs" />

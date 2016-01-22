@@ -1,8 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\VRData.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\VRStandardAssets\Scripts\ExampleInteractiveItem.cs">
     <Files>
-      <File FileName="Assets\Scripts\VRData.cs" Line="22" Column="41" />
+      <File FileName="Assets\VRStandardAssets\Scripts\ExampleInteractiveItem.cs" Line="79" Column="5" />
+      <File FileName="Assets\Scripts\VRData.cs" Line="531" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

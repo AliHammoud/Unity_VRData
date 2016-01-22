@@ -21,7 +21,7 @@ namespace VRStandardAssets.Examples
 		private Dictionary<string, string> args;
 		private bool isLooking = false;
 		private bool isPOI = false;
-		private const int FOCUS_TIME = 2;
+		private const float FOCUS_TIME = 0.75f;
 		private float lookAtTime;
 
         private void Awake ()
@@ -53,11 +53,17 @@ namespace VRStandardAssets.Examples
         //Handle the Over event
         private void HandleOver()
         {
-			
-			isLooking = true;
-            m_Renderer.material = m_OverMaterial;
+			//Color hover = new Color (0.2f, 0.2f, 0.2f);
+			m_Renderer.material.SetColor ("_Color", new Color (0.2f, 0.2f, 0.2f));
 
-			StartCoroutine (letFocus());
+			if (VRData.canLook) {
+
+				isLooking = true;
+				m_Renderer.material = m_OverMaterial;
+
+				StartCoroutine (letFocus());
+
+			}
 
         }
 
@@ -75,6 +81,8 @@ namespace VRStandardAssets.Examples
 
 			} else {
 
+				isPOI = false;
+
 			}
 
 		}
@@ -83,8 +91,9 @@ namespace VRStandardAssets.Examples
         //Handle the Out event
         private void HandleOut()
         {
-			
-			isLooking = false;
+
+			m_Renderer.material.SetColor ("_Color", new Color (1f, 1f, 1f));
+
 			if (isPOI) {
 
 				//Get look duration
@@ -105,6 +114,9 @@ namespace VRStandardAssets.Examples
 
 			}
             m_Renderer.material = m_NormalMaterial;
+
+			isLooking = false;
+			isPOI = false;
 
         }
 
