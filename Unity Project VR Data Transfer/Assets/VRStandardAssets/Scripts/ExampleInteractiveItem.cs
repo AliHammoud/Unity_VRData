@@ -24,6 +24,8 @@ namespace VRStandardAssets.Examples
 		private const float FOCUS_TIME = 0.75f;
 		private float lookAtTime;
 
+		private Vector3 scl;
+
         private void Awake ()
         {
 			
@@ -38,6 +40,7 @@ namespace VRStandardAssets.Examples
             m_InteractiveItem.OnOut += HandleOut;
             m_InteractiveItem.OnClick += HandleClick;
             m_InteractiveItem.OnDoubleClick += HandleDoubleClick;
+			scl = this.transform.localScale;
         }
 
 
@@ -59,7 +62,9 @@ namespace VRStandardAssets.Examples
 			if (VRData.canLook) {
 
 				isLooking = true;
-				m_Renderer.material = m_OverMaterial;
+				m_Renderer.material = m_OverMaterial ; 
+
+				this.transform.localScale = this.transform.localScale * 1.15f;
 
 				StartCoroutine (letFocus());
 
@@ -93,6 +98,7 @@ namespace VRStandardAssets.Examples
         {
 
 			m_Renderer.material.SetColor ("_Color", new Color (1f, 1f, 1f));
+			this.transform.localScale = scl;
 
 			if (isPOI) {
 

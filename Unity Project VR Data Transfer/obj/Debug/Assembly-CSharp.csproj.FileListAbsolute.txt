@@ -43,3 +43,6 @@ C:\Users\Ali\Documents\Workspace\VR Data Transfer\Unity Project VR Data Transfer
 C:\Users\Ali\Documents\Workspace\VR Data Transfer\Unity Project VR Data Transfer\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\Ali\Documents\Workspace\VR Data Transfer\Unity Project VR Data Transfer\obj\Debug\Assembly-CSharp.dll
 C:\Users\Ali\Documents\Workspace\VR Data Transfer\Unity Project VR Data Transfer\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Ali\Documents\Workspace\Unity_VRData\Unity Project VR Data Transfer\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Ali\Documents\Workspace\Unity_VRData\Unity Project VR Data Transfer\obj\Debug\Assembly-CSharp.dll
+C:\Users\Ali\Documents\Workspace\Unity_VRData\Unity Project VR Data Transfer\obj\Debug\Assembly-CSharp.pdb
